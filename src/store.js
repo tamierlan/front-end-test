@@ -13,8 +13,7 @@ const getMiddleware = () => {
 		(!!window.chrome.webstore || !!window.chrome.runtime)
 
 	if (isChrome && !isOpera) {
-		const composeEnhancers =
-			window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+		const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 		return composeEnhancers(applyMiddleware(axMiddleware))
 	} else return applyMiddleware(axMiddleware)
 }

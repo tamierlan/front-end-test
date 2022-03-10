@@ -8,6 +8,24 @@ export const fetchData = (apiAction) => {
       }
     }
   })
+  apiAction({
+    url: 'https://stellardenverdan.free.beeceptor.com/boat-colors/',
+    onSuccess: (data) => {
+      return {
+        type: 'COLORS',
+        data
+      }
+    }
+  })
+  apiAction({
+    url: 'https://stellardenverdan.free.beeceptor.com/boat-styles/',
+    onSuccess: (data) => {
+      return {
+        type: 'STYLES',
+        data
+      }
+    }
+  })
 }
 export const generateInitialValues = (boatData) => {
   return {

@@ -7,11 +7,13 @@ import { fetchData, generateInitialValues, handleSubmit } from './utils'
 
 const mapStateToProps = (state) => {
   return { 
-    formValues: state.api.formValues
+    formValues: state.api.formValues,
+    styleValues: state.api.styleValues,
+    colorValues: state.api.colorValues
   }
 }
 
-const BoatForm = ({formValues, apiAction}) => {
+const BoatForm = ({formValues, apiAction, styleValues, colorValues}) => {
 
   useEffect(() => { fetchData(apiAction) }, [])
 
@@ -55,10 +57,30 @@ const BoatForm = ({formValues, apiAction}) => {
                     <option value={false}>Inactive</option>
                   </Field>
                 </Col>
+
+                <Col xs={4}>
+                  <label htmlFor="status">Status</label>
+                  <Field as="select" id="status" name="status">
+                    {colorValues && colorValues.map(item => {
+                      return <option key={item.id} value={item.id}>{item.name}</option>
+                    })}
+                  </Field>
+                </Col>
+
+                <Col xs={4}>
+                  <label htmlFor="status">Status</label>
+                  <Field as="select" id="status" name="status">
+                  {styleValues && styleValues.map(item => {
+                      return <option key={item.id} value={item.id}>{item.name}</option>
+                    })}
+                  </Field>
+                </Col>
               </Row>
+
               <Row>
-                <button type="submit">Submit</button>
+                <button style={{ padding: '5px', background: 'blue' }} type="submit">Submit</button>
               </Row>
+
             </Form>
           )
         }}
